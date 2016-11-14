@@ -313,7 +313,7 @@ function validateForm(){
 					<div class="row-fluid">
 						<div class="span10" align="left">Patient Information</div>
 						<div class="span2" align="right">
-							<button class="btn-save" title="Save" onclick="createUser();" id="btnsave"></button>
+							<button class="btn-save" title="Save" onclick="createUser();" id="btnsave" style="padding: 11px 18px;"></button>
 							<!-- <button class="btn-save" title="Save" type="submit"></button> -->
 							<div class="btn" title="Cancel" onclick="clearForm();" id="btnclear">
 								<i class="icon-trash"></i>
@@ -337,9 +337,15 @@ function validateForm(){
 							</div>
 						</div> -->
 						<div class="control-group">
-							<label class="control-label">Name</label>
+							<label class="control-label">Patient Name</label>
 							<div class="controls">
-								<input type="Text" id="idname" name="users.empName">
+								<input type="Text" id="patientName" name="patientName">
+							</div>
+						</div>
+						<div class="control-group">
+							<label class="control-label">Age</label>
+							<div class="controls">
+								<input type="Text" id="age" name="age">
 							</div>
 						</div>
 						<!-- <div class="control-group">
@@ -401,16 +407,18 @@ function validateForm(){
 								<input type="Text" id="idcompanyname" name="users.companyName">
 							</div>
 						</div> -->
-						<!-- <div class="control-group">
-							<label class="control-label">PAN</label>
-							<div class="controls">
-								<input type="Text" id="idpan" name="users.pan">
-							</div>
-						</div> -->
 						<div class="control-group">
 							<label class="control-label">Country</label>
 							<div class="controls">
 								<select id="idcountry" name="users.address.country">
+									<option>Select</option>
+								</select>
+							</div>
+						</div>
+						 <div class="control-group">
+							<label class="control-label">Doctor</label>
+							<div class="controls">
+								<select id="doctor" name="doctor">
 									<option>Select</option>
 								</select>
 							</div>
@@ -441,9 +449,9 @@ function validateForm(){
 							</div>
 						</div>
 						<div class="control-group">
-							<label class="control-label">Temporary Password</label>
+							<label class="control-label">Amount</label>
 							<div class="controls">
-								<input type="text" id="idtemppass" name="systems.password">
+								<input type="text" id="amount" name="amount">
 							</div>
 						</div>
 					</div>

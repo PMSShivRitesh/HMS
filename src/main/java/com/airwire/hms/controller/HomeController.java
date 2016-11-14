@@ -2,7 +2,9 @@ package com.airwire.hms.controller;
 
 import java.text.DateFormat;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.Locale;
+import java.util.Map;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -11,6 +13,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.airwire.hms.dao.EmployeeDao;
 import com.airwire.hms.dao.RoleDao;
@@ -19,6 +22,7 @@ import com.airwire.hms.entity.Role;
 import com.airwire.hms.util.EmploymentType;
 import com.airwire.hms.util.RoleType;
 import com.airwire.hms.util.UserStatus;
+
 
 /**
  * Handles requests for the application home page.
@@ -53,7 +57,7 @@ public class HomeController {
 		role.setCreatedOn(new Date());
 		role.setModifiedOn(new Date());
 		
-		roleDao.saveAndFlush(role);
+		//roleDao.saveAndFlush(role);
 		
 		Employee employee = new Employee();
 		employee.setName("Shiv");
@@ -66,15 +70,37 @@ public class HomeController {
 		employee.setUid("3764bcb3b4234yc4");
 		employee.setRole(role);
 		
-		employeeDao.saveAndFlush(employee);
+		//employeeDao.saveAndFlush(employee);
 		
 		return "login/login";
 	}
 	
-	@RequestMapping(value = "dashboard", method = RequestMethod.GET)
+	/*@RequestMapping(value = "dashboard", method = RequestMethod.GET)
 	public String login() {
 		logger.info("Welcome home! The client locale is {}.");
 		return "operator/registerpatient";
+	}*/
+	
+	
+	@RequestMapping(value = "operatordashboard", method = RequestMethod.GET)
+	public String login() {
+		logger.info("Welcome home! The client locale is {}.");
+		return "operator/home";
 	}
+	
+	@RequestMapping(value = "registerpatient", method = RequestMethod.GET)
+	public String registerPatient() {
+		logger.info("Welcome home! The client locale is {}.");
+		return "operator/registerpatient";
+	}
+	
+	@RequestMapping(value = "logout", method = RequestMethod.GET)
+	public ModelAndView logout() {
+		logger.info("Welcome home! The client locale is {}.");
+		Map<String,String> map = new HashMap<String,String>();
+		map.put("message", "Succesfully Loged Out");
+		return new ModelAndView("login/login",map);
+	}
+	
 	
 }
